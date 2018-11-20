@@ -36,8 +36,8 @@ int main() {
     ROM_GPIOPinConfigure(GPIO_PA7_I2C1SDA);
      
     // Select the I2C function for these pins.
-    GPIOPinTypeI2CSCL(GPIO_PORTA_BASE, GPIO_PIN_6);
-    GPIOPinTypeI2C(GPIO_PORTA_BASE, GPIO_PIN_7);
+    ROM_GPIOPinTypeI2CSCL(GPIO_PORTA_BASE, GPIO_PIN_6);
+    ROM_GPIOPinTypeI2C(GPIO_PORTA_BASE, GPIO_PIN_7);
     
     // slave
     I2CSlaveInit(I2C1_BASE, 0x60U);

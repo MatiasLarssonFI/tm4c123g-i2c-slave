@@ -4,7 +4,6 @@
 #include <stdbool.h>
 
 #include "driverlib/i2c.h"
-#include "driverlib/rom.h"
 #include "inc/hw_memmap.h"
 
 #include "bsp.h"

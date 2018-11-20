@@ -29,7 +29,7 @@ FLOAT_ABI = hard
 CFLAGS = -g -mthumb -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=$(FLOAT_ABI)
 CFLAGS +=-Os -ffunction-sections -fdata-sections -MD -std=c99 -Wall
 CFLAGS += -pedantic -DPART_$(MCU) -c -I$(TIVAWARE_PATH) $(INCLUDES)
-CFLAGS += -DTARGET_IS_BLIZZARD_RA1 -D__FPU_PRESENT
+CFLAGS += -DTARGET_IS_TM4C123_RB2 -D__FPU_PRESENT
 LDFLAGS = -T $(LD_SCRIPT) --entry Reset_Handler
 LDFLAGS += -L$(TIVAWARE_PATH)/driverlib/gcc/ -ldriver --specs=nosys.specs
 LDFLAGS += -mfloat-abi=$(FLOAT_ABI)

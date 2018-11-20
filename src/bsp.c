@@ -4,12 +4,13 @@
 #include <stdbool.h>
 
 #include "driverlib/i2c.h"
+#include "driverlib/rom.h"
 #include "inc/hw_memmap.h"
 
 #include "bsp.h"
 #include "tm4c_cmsis.h"
 
-__stackless void assert_failed (char const *file, int line) {
+__attribute__ ((naked)) void assert_failed (char const *file, int line) {
     // TBD: damage control
     NVIC_SystemReset();
 }

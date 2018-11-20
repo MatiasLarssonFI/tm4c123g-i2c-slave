@@ -1,3 +1,5 @@
+#include "bsp.h"
+
 #include <stdint.h>
 #include <stdbool.h>
 
@@ -5,12 +7,11 @@
 #include "inc/hw_memmap.h"
 #include "inc/hw_types.h"
 #include "inc/hw_gpio.h"
+#include "driverlib/rom.h"
 #include "driverlib/i2c.h"
 #include "driverlib/sysctl.h"
 #include "driverlib/gpio.h"
 #include "driverlib/pin_map.h"
-
-#include "bsp.h"
 #include "tm4c_cmsis.h"
 
 
@@ -22,17 +23,17 @@ int main() {
     GPIOF_HS->DEN |= (LED_RED | LED_BLUE | LED_GREEN); // digital enable
     
     // enable I2C module 0
-    SysCtlPeripheralEnable(SYSCTL_PERIPH_I2C1);
+    ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_I2C1);
  
     // reset module
-    SysCtlPeripheralReset(SYSCTL_PERIPH_I2C1);
+    ROM_SysCtlPeripheralReset(SYSCTL_PERIPH_I2C1);
      
     // enable GPIOA peripheral that contains I2C 1
-    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOA);
+    ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOA);
  
     // Configure the pin muxing for I2C1 functions on port A6 and A7.
-    GPIOPinConfigure(GPIO_PA6_I2C1SCL);
-    GPIOPinConfigure(GPIO_PA7_I2C1SDA);
+    ROM_GPIOPinConfigure(GPIO_PA6_I2C1SCL);
+    ROM_GPIOPinConfigure(GPIO_PA7_I2C1SDA);
      
     // Select the I2C function for these pins.
     GPIOPinTypeI2CSCL(GPIO_PORTA_BASE, GPIO_PIN_6);

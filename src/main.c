@@ -23,21 +23,21 @@ int main() {
     GPIOF_HS->DEN |= (LED_RED | LED_BLUE | LED_GREEN); // digital enable
     
     // enable I2C module 0
-    ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_I2C1);
+    SysCtlPeripheralEnable(SYSCTL_PERIPH_I2C1);
  
     // reset module
-    ROM_SysCtlPeripheralReset(SYSCTL_PERIPH_I2C1);
+    SysCtlPeripheralReset(SYSCTL_PERIPH_I2C1);
      
     // enable GPIOA peripheral that contains I2C 1
-    ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOA);
+    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOA);
  
     // Configure the pin muxing for I2C1 functions on port A6 and A7.
-    ROM_GPIOPinConfigure(GPIO_PA6_I2C1SCL);
-    ROM_GPIOPinConfigure(GPIO_PA7_I2C1SDA);
+    GPIOPinConfigure(GPIO_PA6_I2C1SCL);
+    GPIOPinConfigure(GPIO_PA7_I2C1SDA);
      
     // Select the I2C function for these pins.
-    ROM_GPIOPinTypeI2CSCL(GPIO_PORTA_BASE, GPIO_PIN_6);
-    ROM_GPIOPinTypeI2C(GPIO_PORTA_BASE, GPIO_PIN_7);
+    GPIOPinTypeI2CSCL(GPIO_PORTA_BASE, GPIO_PIN_6);
+    GPIOPinTypeI2C(GPIO_PORTA_BASE, GPIO_PIN_7);
     
     // slave
     I2CSlaveInit(I2C1_BASE, 0x60U);

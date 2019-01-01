@@ -20,7 +20,7 @@ void I2C1_IRQHandler_Driverlib(void) {
     // 1,2,3 = R,G,B respectively
     const uint32_t status = I2CSlaveStatus(I2C1_BASE);
     const uint32_t data = I2CSlaveDataGet(I2C1_BASE);
-    if (status == I2C_SLAVE_ACT_RREQ) {
+    if (status & I2C_SLAVE_ACT_RREQ) {
         if (data > 0 && data < 4) {
             // toggle requested LED
             const uint8_t led = (1U << data);

@@ -1,3 +1,5 @@
+#include "bsp.h"
+
 #include <stdint.h>
 #include <stdbool.h>
 
@@ -5,12 +7,11 @@
 #include "inc/hw_memmap.h"
 #include "inc/hw_types.h"
 #include "inc/hw_gpio.h"
+#include "driverlib/rom.h"
 #include "driverlib/i2c.h"
 #include "driverlib/sysctl.h"
 #include "driverlib/gpio.h"
 #include "driverlib/pin_map.h"
-
-#include "bsp.h"
 #include "tm4c_cmsis.h"
 
 
@@ -21,7 +22,7 @@ int main() {
     GPIOF_HS->DIR |= (LED_RED | LED_BLUE | LED_GREEN); // set led pins as outputs
     GPIOF_HS->DEN |= (LED_RED | LED_BLUE | LED_GREEN); // digital enable
     
-    // enable I2C module 0
+    // enable I2C module 1
     SysCtlPeripheralEnable(SYSCTL_PERIPH_I2C1);
  
     // reset module

@@ -1,6 +1,4 @@
 # TM4C123G as an I²C slave
 
-Some of the code is based on Quantum Leaps lessons (http://www.state-machine.com/quickstart/).
-As can be seen, there's no Makefile or other project configuration files
-on the master branch. I have only added the sources here because the goal
-is to port this to GNU Arm. See the gnu-arm branch.
+This served as a reference implementation for https://github.com/MatiasLarssonFI/tm4c123g-i2c-driver
+which is an I²C driver with a C++ interface.

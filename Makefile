@@ -1,12 +1,3 @@
-# Tiva Makefile
-# #####################################
-#
-# Part of the uCtools project
-# uctools.github.com
-#
-#######################################
-# user configuration:
-#######################################
 # TARGET: name of the output file
 TARGET = main
 # MCU: part number to build for
@@ -25,7 +16,7 @@ LD_SCRIPT = $(MCU).lds
 
 FLOAT_ABI = hard
 
-# define flags
+# flags
 CFLAGS = -g -mthumb -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=$(FLOAT_ABI)
 CFLAGS +=-Os -ffunction-sections -fdata-sections -MD -std=c99 -Wall
 CFLAGS += -pedantic -DPART_$(MCU) -c -I$(TIVAWARE_PATH) $(INCLUDES)
@@ -34,19 +25,14 @@ LDFLAGS = -T $(LD_SCRIPT) --entry Reset_Handler
 LDFLAGS += -L$(TIVAWARE_PATH)/driverlib/gcc/ -ldriver --specs=nosys.specs
 LDFLAGS += -mthumb -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=$(FLOAT_ABI) -mfloat-abi=$(FLOAT_ABI)
 
-#######################################
-# end of user configuration
-#######################################
-#
-#######################################
 # binaries
-#######################################
+
 CC = arm-none-eabi-gcc
 LD = arm-none-eabi-gcc
 OBJCOPY = arm-none-eabi-objcopy
 RM      = rm -f
 MKDIR	= mkdir -p
-#######################################
+
 
 # list of object files, placed in the build directory regardless of source path
 OBJECTS = $(addprefix $(OUTDIR)/,$(notdir $(SOURCES:.c=.o)))

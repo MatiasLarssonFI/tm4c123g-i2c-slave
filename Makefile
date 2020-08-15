@@ -32,7 +32,7 @@ CFLAGS += -pedantic -DPART_$(MCU) -c -I$(TIVAWARE_PATH) $(INCLUDES)
 CFLAGS += -DTARGET_IS_TM4C123_RB2 -D__FPU_PRESENT
 LDFLAGS = -T $(LD_SCRIPT) --entry Reset_Handler
 LDFLAGS += -L$(TIVAWARE_PATH)/driverlib/gcc/ -ldriver --specs=nosys.specs
-LDFLAGS += -mfloat-abi=$(FLOAT_ABI)
+LDFLAGS += -mthumb -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=$(FLOAT_ABI) -mfloat-abi=$(FLOAT_ABI)
 
 #######################################
 # end of user configuration

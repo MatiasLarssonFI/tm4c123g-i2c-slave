@@ -5,7 +5,7 @@ MCU = TM4C123GH6PM
 # SOURCES: list of input source sources
 SOURCES = main.c bsp.c startup_tm4c_gnu.c
 # INCLUDES: list of includes, by default, use Includes directory
-INCLUDES = -I$(HOME)/embedded/cmsis/Include
+INCLUDES = -I$(HOME)/embedded/cmsis/Include -I$(HOME)/embedded/include/tm4c
 # OUTDIR: directory to use for output
 OUTDIR = build
 # TIVAWARE_PATH: path to tivaware folder
@@ -20,7 +20,8 @@ FLOAT_ABI = hard
 CFLAGS = -g -mthumb -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=$(FLOAT_ABI)
 CFLAGS +=-Os -ffunction-sections -fdata-sections -MD -std=c99 -Wall
 CFLAGS += -pedantic -DPART_$(MCU) -c -I$(TIVAWARE_PATH) $(INCLUDES)
-CFLAGS += -DTARGET_IS_TM4C123_RB2 -D__FPU_PRESENT
+# SKIP_EXTERN_C is checked by the tm4c_cmsis.h include
+CFLAGS += -DTARGET_IS_TM4C123_RB2 -D__FPU_PRESENT -DSKIP_EXTERN_C
 LDFLAGS = -T $(LD_SCRIPT) --entry Reset_Handler
 LDFLAGS += -L$(TIVAWARE_PATH)/driverlib/gcc/ -ldriver --specs=nosys.specs
 LDFLAGS += -mthumb -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=$(FLOAT_ABI) -mfloat-abi=$(FLOAT_ABI)
